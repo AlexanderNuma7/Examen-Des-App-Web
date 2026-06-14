@@ -9,16 +9,16 @@
         <div :class="['collapse navbar-collapse', { show: menuOpen }]">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a @click.prevent="openContact" class="nav-link" style="cursor:pointer;">Contacto</a>
+              <a @click.prevent="openContact" class="nav-link" style="cursor:pointer;">📞 Contacto</a>
             </li>
             <li class="nav-item">
-              <router-link to="/dashboard/productos" class="nav-link">Productos</router-link>
+              <router-link to="/dashboard/productos" class="nav-link">🏍️ Productos</router-link>
             </li>
             <li v-if="isAdmin" class="nav-item">
-              <router-link to="/dashboard/usuarios" class="nav-link">Usuarios</router-link>
+              <router-link to="/dashboard/usuarios" class="nav-link">👥 Usuarios</router-link>
             </li>
             <li class="nav-item">
-              <a @click.prevent="logout" class="nav-link text-danger" style="cursor:pointer;">Cerrar sesión</a>
+              <a @click.prevent="logout" class="nav-link text-danger" style="cursor:pointer;">🚪 Cerrar sesión</a>
             </li>
           </ul>
         </div>

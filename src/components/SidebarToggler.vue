@@ -8,12 +8,12 @@
 
     <nav class="st-sidebar" :class="{ open }" @click.self="open = false">
       <ul>
-        <li><button @click="logout">Cerrar sesión</button></li>
-        <li><button @click="openContact">Contacto</button></li>
-        <li><button @click="showInfo">Información empresa</button></li>
-        <li><router-link to="/dashboard" class="nav-link" exact-active-class="active-option">Ver</router-link></li>
-        <li><router-link to="/dashboard/productos" class="nav-link" exact-active-class="active-option">Ver Productos</router-link></li>
-        <li><router-link to="/dashboard/usuarios" class="nav-link" exact-active-class="active-option">Ver Usuarios</router-link></li>
+        <li><button @click="logout">🚪 Cerrar sesión</button></li>
+        <li><button @click="openContact">📞 Contacto</button></li>
+        <li><button @click="showInfo">ℹ️ Información empresa</button></li>
+        <li><router-link to="/dashboard" class="nav-link" exact-active-class="active-option">👁️ Ver</router-link></li>
+        <li><router-link to="/dashboard/productos" class="nav-link" exact-active-class="active-option">🏍️ Ver Productos</router-link></li>
+        <li><router-link to="/dashboard/usuarios" class="nav-link" exact-active-class="active-option">👥 Ver Usuarios</router-link></li>
       </ul>
     </nav>
   </div>
