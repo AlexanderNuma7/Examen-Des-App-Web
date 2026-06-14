@@ -6,8 +6,10 @@
     <div class="row gy-4">
       <div v-for="producto in productos" :key="producto.id" class="col-md-6 col-xl-4">
         <div class="card shadow-sm h-100">
-          <img :src="producto.imagen || defaultImage" @error="imagenFallback($event)" class="card-img-top product-image" :alt="producto.nombre" />
-          <div class="card-body d-flex flex-column">
+            <div class="product-image-wrapper">
+              <img :src="producto.imagen || defaultImage" @error="imagenFallback($event)" class="card-img-top product-image" :alt="producto.nombre" />
+            </div>
+            <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ producto.nombre }}</h5>
             <p class="mb-1"><strong>Marca:</strong> {{ producto.marca || 'No especificada' }}</p>
             <p class="mb-1"><strong>Cilindraje:</strong> {{ producto.cilindraje || 'N/A' }}</p>
@@ -292,6 +294,15 @@ export default {
 .product-image:hover {
   transform: scale(1.04);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.product-image-wrapper {
+  background: var(--bg-panel); /* ligeramente más claro que el fondo principal */
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+}
+.product-image {
+  background-color: transparent;
 }
 
 .card {
