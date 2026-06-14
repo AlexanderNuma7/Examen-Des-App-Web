@@ -13,7 +13,7 @@
             <p class="mb-1"><strong>Cilindraje:</strong> {{ producto.cilindraje || 'N/A' }}</p>
             <p class="card-text text-secondary mb-2">{{ producto.descripcion || 'Sin descripción disponible.' }}</p>
             <div class="mt-auto">
-              <p class="fw-bold fs-5 text-danger">${{ producto.precio }}</p>
+              <p class="fw-bold fs-5 price-tag">${{ producto.precio }}</p>
               <div class="d-flex flex-wrap gap-2">
                 <button v-if="isAdmin" class="btn btn-primary btn-sm" @click="editar(producto)">✏️ Editar</button>
                 <button v-if="isAdmin" class="btn btn-danger btn-sm" @click="eliminar(producto.id)">🗑️ Eliminar</button>
@@ -286,16 +286,35 @@ export default {
   height: 260px;
   object-fit: cover;
   object-position: center;
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
+  border-radius: 18px 18px 0 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-image:hover {
+  transform: scale(1.04);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
 .card {
   border-radius: 18px;
+  background: #1E293B;
+  border: 1px solid #334155;
 }
 
 .card-body {
   padding: 1.25rem;
+}
+
+.card-title {
+  color: #F8FAFC;
+}
+
+.price-tag {
+  color: #EF4444;
+  font-weight: 700;
+}
+
+.text-secondary {
+  color: #94A3B8 !important;
 }
 
 .modal-backdrop {
@@ -310,7 +329,8 @@ export default {
 
 .modal-card {
   width: min(95vw, 520px);
-  background: #ffffff;
+  background: #1E293B;
+  border: 1px solid #334155;
   border-radius: 16px;
   overflow: hidden;
   animation: fadeInUp 0.25s ease;

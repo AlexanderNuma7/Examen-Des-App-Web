@@ -1,9 +1,9 @@
 <template>
   <div>
     <button :class="['st-toggler', { open }]" @click="open = !open" :aria-expanded="open" aria-label="Abrir menú">
-      <span class="bar" />
-      <span class="bar" />
-      <span class="bar" />
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </button>
 
     <nav class="st-sidebar" :class="{ open }" @click.self="open = false">
@@ -11,9 +11,9 @@
         <li><button @click="logout">Cerrar sesión</button></li>
         <li><a href="mailto:contacto@empresa.com">Contacto</a></li>
         <li><button @click="showInfo">Información empresa</button></li>
-        <li><button @click="goTo('/dashboard')">Ver</button></li>
-        <li><button @click="goTo('/dashboard/productos')">Ver Productos</button></li>
-        <li><button @click="goTo('/dashboard/usuarios')">Ver Usuarios</button></li>
+        <li><router-link to="/dashboard" class="nav-link" exact-active-class="active-option">Ver</router-link></li>
+        <li><router-link to="/dashboard/productos" class="nav-link" exact-active-class="active-option">Ver Productos</router-link></li>
+        <li><router-link to="/dashboard/usuarios" class="nav-link" exact-active-class="active-option">Ver Usuarios</router-link></li>
       </ul>
     </nav>
   </div>
@@ -46,8 +46,8 @@ export default {
 <style scoped>
 .st-toggler {
   position: fixed;
-  left: 8px;
-  top: 8px;
+  left: 16px;
+  top: 72px;
   z-index: 3000;
   width: 48px;
   height: 48px;
@@ -79,28 +79,43 @@ export default {
   bottom: 0;
   width: 0;
   overflow: hidden;
-  background: rgba(255,255,255,0.98);
-  box-shadow: 2px 0 8px rgba(0,0,0,0.12);
+  background: #0F172A;
+  border-right: 1px solid #334155;
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.32);
   z-index: 1040;
-  transition: width 0.22s ease;
+  transition: width 0.4s ease;
   padding-top: 70px;
 }
 .st-sidebar.open { width: 260px; }
-.st-sidebar ul { list-style: none; padding: 0 12px; margin: 0; }
-.st-sidebar li { margin: 12px 0; }
-.st-sidebar a, .st-sidebar button {
+.st-sidebar ul { list-style: none; padding: 0 16px; margin: 0; }
+.st-sidebar li { margin: 14px 0; }
+.st-sidebar a,
+.st-sidebar button,
+.st-sidebar .nav-link {
   display: block;
   width: 100%;
   text-align: left;
   background: transparent;
   border: none;
-  padding: 10px 14px;
-  color: #222;
+  padding: 12px 14px;
+  color: #CBD5E1;
   font-size: 15px;
   cursor: pointer;
+  border-radius: 12px;
 }
-.st-sidebar a { text-decoration: none; }
-.st-sidebar button:hover, .st-sidebar a:hover { background: #f2f2f2; }
+.st-sidebar a,
+.st-sidebar .nav-link {
+  text-decoration: none;
+}
+.st-sidebar button:hover,
+.st-sidebar a:hover,
+.st-sidebar .nav-link:hover {
+  background: #334155;
+}
+.st-sidebar .active-option {
+  background: #DC2626;
+  color: #fff;
+}
 
 /* animación simple de icono al abrir */
 .st-toggler.open .bar:nth-child(1) {
@@ -110,5 +125,4 @@ export default {
 .st-toggler.open .bar:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
 }
-
 </style>
