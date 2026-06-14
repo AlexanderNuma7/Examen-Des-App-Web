@@ -9,6 +9,9 @@
         <div :class="['collapse navbar-collapse', { show: menuOpen }]">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
+              <a @click.prevent="openContact" class="nav-link" style="cursor:pointer;">Contacto</a>
+            </li>
+            <li class="nav-item">
               <router-link to="/dashboard/productos" class="nav-link">Productos</router-link>
             </li>
             <li v-if="isAdmin" class="nav-item">
@@ -46,6 +49,11 @@ export default {
       localStorage.removeItem('role')
       localStorage.removeItem('userName')
       this.$router.push('/login')
+    }
+    ,
+    openContact() {
+      const { contactOpen } = require('@/state/uiState')
+      contactOpen.value = true
     }
   }
 }

@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <SidebarToggler />
+    <ContactPanel />
+    <CompanyInfoPanel />
     <!-- Aquí se renderiza la vista activa -->
     <router-view />
   </div>
 </template>
 <script>
 import SidebarToggler from '@/components/SidebarToggler.vue'
+import ContactPanel from '@/components/ContactPanel.vue'
+import CompanyInfoPanel from '@/components/CompanyInfoPanel.vue'
 
 export default {
   name: 'App',
-  components: { SidebarToggler }
+  components: { SidebarToggler, ContactPanel, CompanyInfoPanel }
 }
 </script>
 

@@ -9,7 +9,7 @@
     <nav class="st-sidebar" :class="{ open }" @click.self="open = false">
       <ul>
         <li><button @click="logout">Cerrar sesión</button></li>
-        <li><a href="mailto:contacto@empresa.com">Contacto</a></li>
+        <li><button @click="openContact">Contacto</button></li>
         <li><button @click="showInfo">Información empresa</button></li>
         <li><router-link to="/dashboard" class="nav-link" exact-active-class="active-option">Ver</router-link></li>
         <li><router-link to="/dashboard/productos" class="nav-link" exact-active-class="active-option">Ver Productos</router-link></li>
@@ -32,8 +32,14 @@ export default {
       this.$router.push('/login')
     },
     showInfo() {
-      // Mensaje sencillo para no alterar la app
-      alert('Empresa XYZ - Información básica.');
+      const { companyOpen } = require('@/state/uiState')
+      companyOpen.value = true
+      this.open = false
+    },
+    openContact() {
+      const { contactOpen } = require('@/state/uiState')
+      contactOpen.value = true
+      this.open = false
     },
     goTo(path) {
       this.open = false
