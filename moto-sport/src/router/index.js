@@ -3,6 +3,7 @@ import LoginView from '@/views/LoginView.vue'
 import DashboardView from '@/views/DashboardView.vue'
 import ProductoComponent from '@/components/ProductoComponent.vue'
 import UsuariosView from '@/views/UsuariosView.vue'
+import OrdersView from '@/views/OrdersView.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -13,7 +14,8 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       { path: 'productos', component: ProductoComponent, meta: { requiresAuth: true } },
-      { path: 'usuarios', component: UsuariosView, meta: { requiresAuth: true } },
+      { path: 'usuarios', component: UsuariosView, meta: { requiresAuth: true, requiresAdmin: true } },
+      { path: 'ordenes', component: OrdersView, meta: { requiresAuth: true, requiresAdmin: true } },
       { path: '', redirect: 'productos' }
     ]
   },
@@ -41,7 +43,7 @@ router.beforeEach((to, from, next) => {
     return
   }
 
-  if (to.path.startsWith('/dashboard/usuarios') && role !== 'admin') {
+  if (to.meta.requiresAdmin && role !== 'admin') {
     next('/dashboard/productos')
     return
   }

@@ -149,6 +149,11 @@ export default {
       return true
     },
     async agregar() {
+      if (!this.isAdmin) {
+        this.modalMessage = 'Acción no autorizada.'
+        this.modalVisible = true
+        return
+      }
       if (!this.validarFormulario()) {
         return
       }
@@ -174,6 +179,11 @@ export default {
       }
     },
     async editar(producto) {
+      if (!this.isAdmin) {
+        this.modalMessage = 'Acción no autorizada.'
+        this.modalVisible = true
+        return
+      }
       this.editando = true
       this.editandoId = producto.id
       this.nuevo = {
@@ -204,6 +214,11 @@ export default {
       this.modalVisible = true
     },
     async eliminar(id) {
+      if (!this.isAdmin) {
+        this.modalMessage = 'Acción no autorizada.'
+        this.modalVisible = true
+        return
+      }
       if (!confirm('¿Estás seguro de que deseas eliminar esta moto?')) {
         return
       }
@@ -245,7 +260,7 @@ export default {
       })
       localStorage.setItem('orders', JSON.stringify(orders))
       this.checkoutModalVisible = false
-      this.modalMessage = `Compra de ${this.checkoutProduct.nombre} registrada en proceso de pago.`
+      this.modalMessage = 'Su compra ha sido realizada. La empresa se pondrá en contacto con usted para finalizar su pedido.'
       this.modalVisible = true
     },
     cerrarCheckout() {
@@ -379,7 +394,7 @@ export default {
 
 .btn-close::before {
   content: "×";
-  color: #495057;
+  color: #f8fafc;
 }
 
 @keyframes fadeInUp {
@@ -391,5 +406,19 @@ export default {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Forzar texto blanco en modal de compra/alertas */
+.modal-header .modal-title,
+.modal-header small,
+.modal-body p,
+.modal-body .mb-1,
+.modal-body .mb-0,
+.modal-body label {
+  color: #f8fafc !important;
+}
+
+.modal-card .modal-header {
+  border-color: rgba(255,255,255,0.06) !important;
 }
 </style>

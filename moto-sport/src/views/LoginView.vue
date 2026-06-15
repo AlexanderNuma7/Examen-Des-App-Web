@@ -72,8 +72,8 @@ export default {
         }
 
         const username = (user.userName || user.name || '').trim()
-        const adminUsers = ['Alexander Numa', 'Emmanuel Guerrero']
-        const role = adminUsers.includes(username) ? 'admin' : 'user'
+        const adminUsers = ['alexander numa', 'emmanuel guerrero']
+        const role = adminUsers.includes(username.toLowerCase()) ? 'admin' : 'user'
 
         localStorage.setItem('token', `token-${Date.now()}`)
         localStorage.setItem('logueado', 'true')

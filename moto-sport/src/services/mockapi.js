@@ -69,7 +69,8 @@ function normalizeUser(user) {
     id: user.id,
     name: user.name || user.userName || user.nombre || '',
     password: user.password || '',
-    userName: user.userName || user.name || user.nombre || ''
+    userName: user.userName || user.name || user.nombre || '',
+    role: user.role || 'user'
   }
 }
 
@@ -96,7 +97,9 @@ export function getUsers() {
 export function createUser(user) {
   const payload = {
     name: user.name,
-    password: user.password
+    userName: user.userName,
+    password: user.password,
+    role: user.role || 'user'
   }
   const body = JSON.stringify(payload)
   const options = {
@@ -113,7 +116,9 @@ export function updateUser(user) {
   const encodedId = encodeURIComponent(user.id)
   const payload = {
     name: user.name,
-    password: user.password
+    userName: user.userName,
+    password: user.password,
+    role: user.role || 'user'
   }
   const body = JSON.stringify(payload)
   const options = {
